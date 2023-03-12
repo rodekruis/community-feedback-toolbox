@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="column is-4 is-offset-4">
+  <div class="box">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="notification is-danger">
+            {{ messages[0] }}
+        </div>
+    {% endif %}
+    {% endwith %}
+    <label class="label is-medium">Upload the file containing the coding framework.</label>
+    <label class="label is-small">N.B. The file must be an Excel Workbook (.xlsx) and have three columns/fields named "type", "category", and "code"</label>
+    <br>
+    <form action="/create_framework" method="POST" enctype="multipart/form-data">
+      <div class="field">
+        <div class="control">
+          <input class="input is-medium" type="text" name="framework_name" placeholder="Framework name" autofocus="">
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <input class="input is-medium" type="file" name="file" />
+        </div>
+      </div>
+      <button class="button is-block is-info is-medium is-fullwidth">Upload framework</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

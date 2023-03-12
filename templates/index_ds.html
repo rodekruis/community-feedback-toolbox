@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="column is-4 is-offset-4">
+  <div class="box">
+    <form action="/name_ds" method="GET">
+      <button class="button is-block is-info is-medium is-fullwidth">Create new dataset</button>
+    </form>
+    <br>
+   <form action="/list_ds" method="GET">
+      <button class="button is-block is-info is-medium is-fullwidth">Select dataset</button>
+    </form>
+    <br>
+   <form action="/list_ds_delete" method="GET">
+      <button class="button is-block is-info is-medium is-fullwidth">Delete dataset</button>
+    </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="column is-4 is-offset-4">
+  <div class="box">
+    <label class="label is-medium">Error!</label>
+    <label class="label is-small">The automated analysis is only available for standard coding frameworks.</label>
+    <label class="label is-small">The coding framework that you have currently selected is custom-made.</label>
+    <label class="label is-small">Please select a standard coding framework.</label>
+    <br>
+    <form action="/list_framework" method="GET">
+      <button class="button is-block is-info is-medium is-fullwidth">Select coding framework</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

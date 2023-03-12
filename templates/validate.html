@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script>
+  window.onload = function() {
+    var jsonStr = document.getElementById('framework').value.replace(/'/g, '"');
+    var typeObject = JSON.parse(jsonStr);
+    var typeSel = document.getElementById("type");
+    var categorySel = document.getElementById("category");
+    var codeSel = document.getElementById("code");
+    for (var x in typeObject) {
+      typeSel.options[typeSel.options.length] = new Option(x, x);
+    }
+    typeSel.onchange = function() {
+      codeSel.length = 1;
+      categorySel.length = 1;
+      for (var y in typeObject[this.value]) {
+        categorySel.options[categorySel.options.length] = new Option(y, y);
+      }
+    }
+    categorySel.onchange = function() {
+      codeSel.length = 1;
+      var z = typeObject[typeSel.value][this.value];
+      for (var i = 0; i < z.length; i++) {
+        codeSel.options[codeSel.options.length] = new Option(z[i], z[i]);
+      }
+    }
+    type_selected = document.getElementById('type_selected').value
+    if (type_selected != '') {
+      typeSel.value = type_selected;
+      codeSel.length = 1;
+      categorySel.length = 1;
+      for (var y in typeObject[type_selected]) {
+        categorySel.options[categorySel.options.length] = new Option(y, y);
+      }
+    }
+    category_selected = document.getElementById('category_selected').value
+    if (category_selected != '') {
+      categorySel.value = category_selected;
+      codeSel.length = 1;
+      var z = typeObject[typeSel.value][category_selected];
+      for (var i = 0; i < z.length; i++) {
+        codeSel.options[codeSel.options.length] = new Option(z[i], z[i]);
+      }
+    }
+    code_selected = document.getElementById('code_selected').value
+    if (code_selected != '') {
+      codeSel.value = code_selected;
+    }
+  }
+</script>
+
+<div class="box">
+  <input hidden type="text" id="framework" value='{{ framework }}'>
+  <input hidden type="text" id="type_selected" value='{{ type_selected }}'>
+  <input hidden type="text" id="category_selected" value='{{ category_selected }}'>
+  <input hidden type="text" id="code_selected" value='{{ code_selected }}'>
+
+  <form action="/validate_save" method="POST">
+    <div class="control" hidden>
+      <input id="message_id" class="input" type="text" name="message_id" value="{{ message_id }}">
+    </div>
+    <div class="column">
+      <label class="label is-medium">{{ message }}</label>
+        <br>
+      <div class="columns">
+        <div class="column is-one-third">
+<!--          <label class="label is-medium">Type:</label>-->
+          <div class="select is-medium">
+            <select name="type" id="type">
+              <option value="" selected="selected">Select type</option>
+            </select>
+          </div>
+        </div>
+        <div class="column is-one-third">
+<!--          <label class="label is-medium">Category:</label>-->
+          <div class="select is-medium">
+            <select name="category" id="category">
+              <option value="" selected="selected">Select category</option>
+            </select>
+          </div>
+        </div>
+        <div class="column is-one-third">
+<!--          <label class="label is-medium">Code:</label>-->
+          <div class="select is-medium">
+            <select name="code" id="code">
+              <option value="" selected="selected">Select code</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column is-4 is-offset-4">
+      <div class="field is-grouped">
+        <button class="button is-block is-info is-medium is-fullwidth">Validate</button>
+      </div>
+    </div>
+  </form>
+  <div class="column is-4 is-offset-4">
+    <form action="/" method="GET">
+      <button class="button is-block is-info is-medium is-fullwidth">Go back to main menu</button>
+    </form>
+  </div>
+</div>
+
+{% if type_selected != "" %}
+  <script>
+    var typeSel = document.getElementById("type");
+    typeSel.select(type_selected)
+  </script>
+{% endif %}
+{% endblock %}

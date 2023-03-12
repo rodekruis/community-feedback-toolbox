@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="column is-4 is-offset-4">
+  <div class="box">
+    <label class="label is-medium">Warning!</label>
+    <label class="label is-small">All feedback data associated with this dataset will be deleted.</label>
+    <label class="label is-small">Are you sure that you want to continue?</label>
+    <br>
+  <form action="/delete_ds" method="POST">
+      <div class="control" hidden><input id="codeinput" class="input" type="text" name="ds_id" value={{ ds_id }}></div>
+      <button class="button is-block is-info is-medium is-fullwidth">Yes</button>
+    </form>
+    <br>
+      <form action="/index_ds" method="GET">
+      <button class="button is-block is-info is-medium is-fullwidth">No</button>
+    </form>
+    </div>
+</div>
+{% endblock %}

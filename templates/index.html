@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="column is-4 is-offset-4">
+  <div class="box">
+    <label class="label is-medium">Dataset: {{ ds_name }}</label>
+    <label class="label is-small" style="font-size:100%">Coding framework: {{ framework_name }}</label>
+    {% if number_messages > 0 %}
+    <label class="label is-small" style="font-size:100%">Feedback analyzed: {{ number_messages_validated }} / {{ number_messages }}</label>
+    {% endif %}
+    <br>
+    <form action="/upload_data" method="GET">
+      <button class="button is-block is-info is-medium is-fullwidth">Add feedback data</button>
+    </form>
+    <br>
+    <form action="/view_data" method="POST">
+      <button class="button is-block is-info is-medium is-fullwidth">View feedback data</button>
+    </form>
+    <br>
+    <form action="/validate" method="GET">
+      <button class="button is-block is-info is-medium is-fullwidth">Analyze feedback data</button>
+    </form>
+    <br>
+    <form action="/automated_analysis_check" method="GET">
+      <button class="button is-block is-info is-medium is-fullwidth">Automated analysis (beta)</button>
+    </form>
+    <br>
+    <form action="/download_data" method="POST">
+      <button class="button is-block is-info is-medium is-fullwidth">Download feedback data</button>
+    </form>
+  </div>
+
+  <div class="box">
+    <form action="/index_ds" method="GET">
+      <button class="button is-block is-info is-medium is-fullwidth">Change dataset</button>
+    </form>
+    <br>
+    <form action="/list_framework" method="GET">
+      <button class="button is-block is-info is-medium is-fullwidth">Change coding framework</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

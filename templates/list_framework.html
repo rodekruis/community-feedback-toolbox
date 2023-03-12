@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container has-text-centered">
+    <div class="column is-4 is-offset-4">
+        <div class="box">
+          <label class="label is-medium">Select a coding framework</label>
+        </div>
+    </div>
+</div>
+
+<div class="column">
+  <div class="box">
+    <div class="columns">
+      {% for column in columns %}
+      {% if column != 'framework_id' and column != 'view' and column != 'select'%}
+      <div class="column">
+        <label class="label is-medium">{{ column }}</label>
+      </div>
+      {% endif %}
+      {% endfor %}
+      <div class="column">
+        <label class="label is-medium"> </label>
+      </div>
+      <div class="column">
+        <label class="label is-medium"> </label>
+      </div>
+    </div>
+    {% for row in rows %}
+    <div class="columns">
+      {% for column in columns %}
+      {% if column != 'framework_id' %}
+      <div class="column">
+        {% if column == 'view' %}
+        <form action="/view_framework" method="POST">
+          <div class="control" hidden>
+            <input id="didin" class="input" type="text" name="framework_id" value="{{ row['framework_id'] }}">
+            <input id="dnain" class="input" type="text" name="framework_name" value="{{ row['framework name'] }}">
+          </div>
+          <button class="button is-info is-small" style="font-size:100%">{{ row[column] }}</button>
+        </form>
+        {% elif column == 'select'%}
+        <form action="/select_framework" method="POST">
+          <div class="control" hidden>
+            <input id="val" class="input" type="text" name="start_validate" value="{{ start_validate }}">
+            <input id="didin" class="input" type="text" name="framework_id" value="{{ row['framework_id'] }}">
+            <input id="dnain" class="input" type="text" name="framework_name" value="{{ row['framework name'] }}">
+          </div>
+          <button class="button is-info is-small" style="font-size:100%">{{ row[column] }}</button>
+        </form>
+        {% else %}
+        <label class="label is-small" style="font-size:100%">{{ row[column] }}</label>
+        {% endif %}
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

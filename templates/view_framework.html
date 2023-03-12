@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="column">
+  <div class="box">
+    <div class="columns">
+      {% for column in columns %}
+      <div class="column">
+        <label class="label is-medium">{{ column }}</label>
+      </div>
+      {% endfor %}
+    </div>
+    {% for row in rows %}
+    <div class="columns">
+      {% for column in columns %}
+      <div class="column">
+        <label class="label is-small">{{ row[column] }}</label>
+      </div>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<div class="column is-4 is-offset-4">
+  <div class="columns">
+    <div class="column">
+      <form action="/list_framework" method="GET">
+        <button class="button is-block is-info is-medium is-fullwidth">Go back</button>
+      </form>
+    </div>
+    <div class="column">
+      <form action="/select_framework" method="POST">
+        <div class="control" hidden>
+          <input id="didin" class="input" type="text" name="framework_id" value="{{ framework_id }}">
+          <input id="dnain" class="input" type="text" name="framework_name" value="{{ framework_name }}">
+        </div>
+        <button class="button is-block is-info is-medium is-fullwidth">Select</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

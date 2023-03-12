@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="column is-4 is-offset-4">
+  <div class="box">
+    <label class="label is-medium">Select a dataset</label>
+    {% for ds_name, ds_id in data.items() %}
+    <br>
+    <form action="/select_ds" method="POST">
+      <div class="control" hidden>
+        <input id="didin" class="input" type="text" name="ds_id" value="{{ ds_id }}">
+        <input id="dnain" class="input" type="text" name="ds_name" value="{{ ds_name }}">
+      </div>
+      <button class="button is-block is-info is-medium is-fullwidth">{{ ds_name }}</button>
+    </form>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
