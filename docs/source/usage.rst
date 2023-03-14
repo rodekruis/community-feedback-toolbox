@@ -19,7 +19,7 @@ Select or add a coding framework
 #. If you want to use a **standard** coding framework:
   * select **"Select framework"** and choose one from the list.
 #. If you want to use a **custom** coding framework:
-  * prepare the coding framework in `Excel <https://www.microsoft.com/en-us/microsoft-365/excel>`_ (.xlsx). The template from the `IFRC CEA toolkit<https://communityengagementhub.org/resource/cea-toolkit>` is natively supported.
+  * prepare the coding framework in `Excel <https://www.microsoft.com/en-us/microsoft-365/excel>`_ (.xlsx). The template from the `IFRC CEA toolkit<https://communityengagementhub.org/resource/cea-toolkit>`_ is natively supported.
   * The coding framework **must** contain three fields/columns named "type", "category", and "code".
   * Insert a unique name and select **"Upload framework"**.
   * Verify that everything looks as expected.
@@ -28,7 +28,7 @@ Select or add a coding framework
 Analyze data
 ----------------
 
-#. Optional: from **"Home"**, select **"Automated analysis (beta)"** and wait until the analysis is completed.
+#. Optional: from **"Home"**, select **"Automated analysis"** and wait until the analysis is completed.
 #. From **"Home"**, select **"Analyze feedback data"**.
   * Select the most suitable topic/category/code for the message, then **"Validate"**.
   * Repeat until all messages are analyzed.
