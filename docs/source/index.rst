@@ -6,7 +6,7 @@ Given a list of messages and a coding framework, you can use the Community Feedb
 validate the classification, and share the data with others.
 
 - **Easy** to use and **fast** to set up.
-- **Complementary to** and fully compatible with the `IFRC CEA toolkit<https://communityengagementhub.org/resource/cea-toolkit>`_.
+- **Complementary to** and fully compatible with the `IFRC CEA toolkit <https://communityengagementhub.org/resource/cea-toolkit>`_.
 - Supports multiple, independent projects/operations at the same time.
 - Supports multiple coding frameworks, including custom-made ones.
 - Supports **automated coding** of community feedback, for selected standard coding frameworks.
